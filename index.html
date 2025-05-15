@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livraria Fruto Proibido</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-bg {
+            background-image: url('https://placehold.co/1920x1080/333333/FFFFFF?text=Livraria+Fruto+Proibido'); /* Imagem de placeholder escura */
+            background-size: cover;
+            background-position: center;
+        }
+        .playfair-display {
+            font-family: 'Playfair Display', serif;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        /* Estilo para a caixa de mensagem */
+        .message-box {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50; /* Verde para sucesso */
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .message-box.show {
+            opacity: 1;
+        }
+        .message-box.error {
+            background-color: #f44336; /* Vermelho para erro */
+        }
+    </style>
+</head>
+<body class="bg-stone-100 text-stone-800">
+
+    <div id="globalMessageBox" class="message-box"></div>
+
+    <header class="bg-stone-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold playfair-display">Livraria <span class="text-red-500">Fruto Proibido</span></a>
+            <nav class="space-x-6">
+                <a href="#sobre" class="hover:text-red-400 transition duration-300">Sobre Nós</a>
+                <a href="#livros" class="hover:text-red-400 transition duration-300">Livros</a>
+                <a href="#eventos" class="hover:text-red-400 transition duration-300">Eventos</a>
+                <a href="#contato" class="hover:text-red-400 transition duration-300">Contato</a>
+            </nav>
+            <button id="mobileMenuButton" class="md:hidden focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <div id="mobileMenu" class="md:hidden hidden bg-stone-800">
+            <a href="#sobre" class="block px-6 py-3 hover:bg-stone-700 transition duration-300">Sobre Nós</a>
+            <a href="#livros" class="block px-6 py-3 hover:bg-stone-700 transition duration-300">Livros</a>
+            <a href="#eventos" class="block px-6 py-3 hover:bg-stone-700 transition duration-300">Eventos</a>
+            <a href="#contato" class="block px-6 py-3 hover:bg-stone-700 transition duration-300">Contato</a>
+        </div>
+    </header>
+
+    <section class="hero-bg text-white h-[calc(100vh-68px)] flex items-center justify-center">
+        <div class="text-center bg-black bg-opacity-60 p-10 rounded-lg">
+            <h1 class="text-5xl md:text-7xl font-bold playfair-display mb-6">Descubra Leituras que <span class="text-red-500">Desafiam</span>.</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Na Livraria Fruto Proibido, celebramos a ousadia literária e as narrativas que transformam.</p>
+            <a href="#livros" class="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-8 rounded-lg text-lg transition duration-300 shadow-md hover:shadow-lg">Explore Nosso Acervo</a>
+        </div>
+    </section>
+
+    <section id="sobre" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold playfair-display text-center mb-12 text-stone-800">Sobre a <span class="text-red-500">Fruto Proibido</span></h2>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/600x400/7F1D1D/FFFFFF?text=Nossa+Inspiração" alt="Inspiração da Livraria" class="rounded-lg shadow-xl w-full h-auto object-cover">
+                </div>
+                <div class="md:w-1/2 text-lg text-stone-700 space-y-6">
+                    <p>Bem-vindo à Livraria Fruto Proibido, um espaço dedicado aos amantes de livros que buscam mais do que simples histórias. Inspirados pela coragem e pela visão da editora Fruto Proibido, selecionamos obras que incitam o pensamento crítico, exploram temas tabus e celebram a diversidade de vozes.</p>
+                    <p>Nossa missão é ser um refúgio para mentes curiosas, um ponto de encontro para debates instigantes e uma fonte de descobertas literárias que marcam. Acreditamos no poder da palavra escrita para questionar, provocar e, acima de tudo, libertar.</p>
+                    <p>Explore nossas prateleiras e encontre seu próximo "fruto proibido" – aquele livro que você não sabia que precisava, mas que não conseguirá esquecer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="livros" class="py-16 md:py-24 bg-stone-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold playfair-display text-center mb-16 text-stone-800">Livros que <span class="text-red-500">Provocam</span></h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover transition-all duration-300 ease-in-out">
+                    <img src="https://placehold.co/400x600/991B1B/FFFFFF?text=Livro+Ousado+1" alt="Capa do Livro Ousado 1" class="w-full h-72 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 playfair-display text-stone-800">O Despertar da Consciência</h3>
+                        <p class="text-sm text-stone-600 mb-1">Por Autor Visionário</p>
+                        <p class="text-stone-700 mb-4 text-sm">Uma obra que desafia as convenções e expande horizontes.</p>
+                        <span class="text-lg font-bold text-red-600">R$ 49,90</span>
+                        <button class="mt-4 w-full bg-stone-800 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300">Adicionar ao Carrinho</button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover transition-all duration-300 ease-in-out">
+                    <img src="https://placehold.co/400x600/B91C1C/FFFFFF?text=Livro+Intrigante+2" alt="Capa do Livro Intrigante 2" class="w-full h-72 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 playfair-display text-stone-800">Vozes Silenciadas</h3>
+                        <p class="text-sm text-stone-600 mb-1">Por Coletivo Rebelde</p>
+                        <p class="text-stone-700 mb-4 text-sm">Antologia de contos que dão voz ao inexplorado.</p>
+                        <span class="text-lg font-bold text-red-600">R$ 59,90</span>
+                        <button class="mt-4 w-full bg-stone-800 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300">Adicionar ao Carrinho</button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover transition-all duration-300 ease-in-out">
+                    <img src="https://placehold.co/400x600/DC2626/FFFFFF?text=Livro+Polêmico+3" alt="Capa do Livro Polêmico 3" class="w-full h-72 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 playfair-display text-stone-800">A Heresia Necessária</h3>
+                        <p class="text-sm text-stone-600 mb-1">Por Pensador Audaz</p>
+                        <p class="text-stone-700 mb-4 text-sm">Ensaio que questiona dogmas e propõe novas perspectivas.</p>
+                        <span class="text-lg font-bold text-red-600">R$ 65,00</span>
+                        <button class="mt-4 w-full bg-stone-800 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300">Adicionar ao Carrinho</button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover transition-all duration-300 ease-in-out">
+                    <img src="https://placehold.co/400x600/F87171/FFFFFF?text=Livro+Transformador+4" alt="Capa do Livro Transformador 4" class="w-full h-72 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 playfair-display text-stone-800">Metamorfoses Urbanas</h3>
+                        <p class="text-sm text-stone-600 mb-1">Por Cronista Contemporâneo</p>
+                        <p class="text-stone-700 mb-4 text-sm">Crônicas poéticas sobre as transformações da cidade e da alma.</p>
+                        <span class="text-lg font-bold text-red-600">R$ 45,90</span>
+                        <button class="mt-4 w-full bg-stone-800 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300">Adicionar ao Carrinho</button>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-8 rounded-lg text-lg transition duration-300 shadow-md hover:shadow-lg">Ver Todos os Livros</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="eventos" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold playfair-display text-center mb-16 text-stone-800">Nossos <span class="text-red-500">Encontros</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="bg-stone-50 p-8 rounded-lg shadow-lg flex flex-col md:flex-row items-center gap-6">
+                    <div class="bg-red-500 text-white p-6 rounded-lg text-center w-full md:w-1/4">
+                        <span class="block text-4xl font-bold">25</span>
+                        <span class="block text-lg">JUL</span>
+                    </div>
+                    <div class="md:w-3/4">
+                        <h3 class="text-2xl font-semibold mb-2 playfair-display text-stone-800">Debate: Literatura e Resistência</h3>
+                        <p class="text-stone-700 mb-3">Junte-se a nós para uma conversa instigante sobre o papel da literatura como forma de resistência cultural e social. Com autores convidados.</p>
+                        <p class="text-sm text-red-600 font-semibold">19:00 - Online e Presencial (Vagas Limitadas)</p>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-8 rounded-lg shadow-lg flex flex-col md:flex-row items-center gap-6">
+                    <div class="bg-red-500 text-white p-6 rounded-lg text-center w-full md:w-1/4">
+                        <span class="block text-4xl font-bold">10</span>
+                        <span class="block text-lg">AGO</span>
+                    </div>
+                    <div class="md:w-3/4">
+                        <h3 class="text-2xl font-semibold mb-2 playfair-display text-stone-800">Lançamento: "Sombras da Metrópole"</h3>
+                        <p class="text-stone-700 mb-3">Sessão de autógrafos e bate-papo com o autor do mais novo romance publicado pela Fruto Proibido Edições.</p>
+                        <p class="text-sm text-red-600 font-semibold">18:30 - Na Livraria</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-16 md:py-24 bg-stone-800 text-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold playfair-display text-center mb-12">Entre em <span class="text-red-500">Contato</span></h2>
+            <div class="max-w-3xl mx-auto bg-stone-700 p-8 md:p-12 rounded-lg shadow-2xl">
+                <form id="contactForm">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="nome" class="block mb-2 text-sm font-medium">Nome Completo</label>
+                            <input type="text" id="nome" name="nome" class="w-full p-3 rounded-lg bg-stone-600 border border-stone-500 focus:ring-red-500 focus:border-red-500" placeholder="Seu nome" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-2 text-sm font-medium">Email</label>
+                            <input type="email" id="email" name="email" class="w-full p-3 rounded-lg bg-stone-600 border border-stone-500 focus:ring-red-500 focus:border-red-500" placeholder="seuemail@exemplo.com" required>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="assunto" class="block mb-2 text-sm font-medium">Assunto</label>
+                        <input type="text" id="assunto" name="assunto" class="w-full p-3 rounded-lg bg-stone-600 border border-stone-500 focus:ring-red-500 focus:border-red-500" placeholder="Sobre o que gostaria de falar?" required>
+                    </div>
+                    <div class="mb-8">
+                        <label for="mensagem" class="block mb-2 text-sm font-medium">Mensagem</label>
+                        <textarea id="mensagem" name="mensagem" rows="5" class="w-full p-3 rounded-lg bg-stone-600 border border-stone-500 focus:ring-red-500 focus:border-red-500" placeholder="Sua mensagem..." required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-10 rounded-lg text-lg transition duration-300 shadow-md hover:shadow-lg">Enviar Mensagem</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-stone-900 text-stone-300 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p class="playfair-display text-2xl mb-2">Livraria Fruto Proibido</p>
+            <p class="mb-4">Onde cada livro é uma descoberta.</p>
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="#" class="hover:text-red-400 transition duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                </a>
+                <a href="#" class="hover:text-red-400 transition duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg>
+                </a>
+                <a href="#" class="hover:text-red-400 transition duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.013-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.
